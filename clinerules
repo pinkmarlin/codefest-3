@@ -1,0 +1,15 @@
+# Cline Rules
+tools_folder:
+  description: "The tools folder contains node MCP servers"
+  organization_rules:
+    - "All MCP tools should be in their own directories"
+    - "Each MCP server should have its own dedicated folder within the tools directory"
+  servers:
+    - name: "Jira MCP Server"
+      description: "A server for accessing Jira tickets, specifically designed to pull bug tickets from Jira projects"
+      location: "tools/jira-mcp-server/"
+      tools:
+        - name: "get_bug_tickets"
+          description: "Retrieves Jira tickets that are classified as bugs"
+      configuration: "Requires Jira credentials in a .env file"
+  usage: "To use an MCP server, first install its dependencies and configure it according to its README.md file"
