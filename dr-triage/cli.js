@@ -1,5 +1,5 @@
 import { text, intro, outro, spinner, cancel, isCancel } from "@clack/prompts";
-import { drTriageArt, getRandomGenieLine } from './client/dr-triage.js';
+import { drTriageArt, asciiDoctor, asciiTriage, getRandomGenieLine, getRandomThinkingLine, getRandomResponseLine } from './client/dr-triage.js';
 import { genAIResponse } from './client/ai.js';
 import { getPlaceholder } from "./client/placeholders.js";
 import { getCurl } from './client/get-curl.js';
@@ -45,9 +45,9 @@ async function question(prompt) {
 }
 
 async function run() {
-  s.start();
+  s.start(getRandomThinkingLine());
   const prompt = await genAIResponse({ messages });
-  s.stop();
+  s.stop(getRandomResponseLine());
   addMessage(prompt, 'assistant');
   const response = await question(`🧞 ${prompt}`);
   addMessage(response, 'user');
@@ -56,6 +56,8 @@ async function run() {
 
 async function main() {
   console.log(drTriageArt);
+  console.log(asciiDoctor);
+  console.log(asciiTriage)
   intro("🧞 Dr. Triage at your service");
 
   process.on('SIGINT', () => {

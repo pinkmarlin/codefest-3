@@ -1,28 +1,33 @@
 export const drTriageArt = `
-        _.---.__
-      .'        \`-.
-     /      .--.   |
-     \\/  / /    |_/
-      \`\\/|/    _(_)
-   ___  /|_.--'    \`.   .
-   \\  \`--' .---.     \\ /|
-    )   \`       \\     //|
-    | __    __   |   '/||
-    |/  \\  /  \\      / ||
-    ||  |  |   \\     \\  |
-    \\|  |  |   /        |
-   __\\\\@/  |@ | ___ \\--'
-  (     /' \`--'  __)|
- __>   (  .  .--' &"\\
-/   \`--|_/--'     &  |
-|                 #. |
-|                 q# |
- \\              ,ad#'
-  \`.________.ad####'
-    \`#####""""""''
-     \`&#"
-      &# "&
-      "#ba"'
+.     |___________________________________
+|-----|- - -|''''|''''|''''|''''|''''|'##\|__
+|- -  |  cc 6    5    4    3    2    1 ### __]==----------------------
+|-----|________________________________##/|
+'     |""""""""""""""""""""""
+`;
+
+export const asciiDoctor = `
+_____             _             
+|  __ \           | |            
+| |  | | ___   ___| |_ ___  _ __ 
+| |  | |/ _ \ / __| __/ _ \| '__|
+| |__| | (_) | (__| || (_) | |   
+|_____/ \___/ \___|\__\___/|_|   
+`;
+
+export const asciiTriage = `
+/$$$$$$$$        /$$                              
+|__  $$__/       |__/                              
+   | $$  /$$$$$$  /$$  /$$$$$$   /$$$$$$   /$$$$$$ 
+   | $$ /$$__  $$| $$ |____  $$ /$$__  $$ /$$__  $$
+   | $$| $$  \__/| $$  /$$$$$$$| $$  \ $$| $$$$$$$$
+   | $$| $$      | $$ /$$__  $$| $$  | $$| $$_____/
+   | $$| $$      | $$|  $$$$$$$|  $$$$$$$|  $$$$$$$
+   |__/|__/      |__/ \_______/ \____  $$ \_______/
+                                /$$  \ $$          
+                               |  $$$$$$/          
+                                \______/           
+
 `;
 
 export function getRandomGenieLine() {
@@ -51,4 +56,38 @@ export function getRandomGenieLine() {
 
   const randomIndex = Math.floor(Math.random() * genieDefectHelperLines.length);
   return genieDefectHelperLines[randomIndex];
+}
+
+const genieThinkingLines = [
+  "Thinking, boss...",
+  "Rubbing the lamp...",
+  "Summoning answers...",
+  "One sec...",
+  "Buffering magic...",
+  "Grant in progress...",
+  "Fetching stardust...",
+  "Cooking a fix...",
+  "Abraca-loading...",
+  "Hold that wish..."
+];
+
+const genieResponseLines = [
+  "Wish granted!",
+  "Boom, done!",
+  "Here it is!",
+  "Poof — fixed!",
+  "Right on cue!",
+  "Magic delivered!",
+  "Solved and sealed!",
+  "Alakazam!",
+  "Voila!",
+  "Fixed it!"
+];
+
+export function getRandomThinkingLine() {
+  return genieThinkingLines[Math.floor(Math.random() * genieThinkingLines.length)];
+}
+
+export function getRandomResponseLine() {
+  return genieResponseLines[Math.floor(Math.random() * genieResponseLines.length)];
 }
