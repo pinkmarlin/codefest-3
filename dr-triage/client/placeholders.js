@@ -23,11 +23,13 @@ const placeholderCurl2 = `curl --location '${CURL_PLACEHOLDER_HOST}/v1/graph/exp
 
 /**
  * @param {string} prompt 
+ * @param {Array<{code: string; text: string}>} prompt 
+ * @returns { code: string; text: string } | null
  */
 export function getPlaceholder(prompt, previous = []) {
     // If prompt is asking for a curl, insert default one above
-    if (prompt.toLowerCase().includes('curl') && !previous.includes(placeholderCurl2)) {
-        return placeholderCurl2;
+    if (prompt.toLowerCase().includes('curl') && !previous.some(({code}) => code === 'curl')) {
+        return {code: 'curl', text: placeholderCurl2};
     }
     return null;
 }

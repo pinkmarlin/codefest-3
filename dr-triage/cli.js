@@ -2,6 +2,7 @@ import { text, intro, outro, spinner, cancel, isCancel } from "@clack/prompts";
 import { drTriageArt, getRandomGenieLine } from './client/dr-triage.js';
 import { genAIResponse } from './client/ai.js';
 import { getPlaceholder } from "./client/placeholders.js";
+import { getCurl } from './client/get-curl.js';
 import 'dotenv/config';
 
 const messages = [];
@@ -16,9 +17,24 @@ const s = spinner();
 async function question(prompt) {
   
   const placeholder = getPlaceholder(prompt, placeholders); // insert previous placeholders to prevent duplicates
-  placeholders.push(placeholder);
 
-  const response = await text({ message: `🧞 ${prompt}`, placeholder});
+  let response;
+
+  if (placeholder) {
+    placeholders.push(placeholder);
+    switch(placeholder.code) {
+      case 'curl':
+        // If asking for a curl, select a bash file
+        response = await getCurl(`🧞 ${prompt}`, placeholder.text);
+        break;
+      default:
+        response = await text({ message: `🧞 ${prompt}`});
+        break;
+    }
+  } else {
+    response = await text({ message: `🧞 ${prompt}`});
+  }
+
   if (isCancel(response)) {
     cancel('Operation cancelled.');
     process.exit(0);
