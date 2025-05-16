@@ -1,14 +1,33 @@
 {
-  "name": "jira-mcp-server",
+  "name": "jira-mcp-server-2",
   "version": "1.0.0",
-  "description": "MCP server for accessing Jira tickets",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
+  "type": "module",
+  "bin": {
+    "jira": "./build/index.js"
   },
+  "scripts": {
+    "build": "tsc && chmod 755 build/index.js",
+    "start": "npm run build && node build/index.js"
+  },
+  "files": [
+    "build"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
-    "@modelcontextprotocol/server": "^0.1.0",
+    "@modelcontextprotocol/sdk": "^1.11.3",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
     "jira-client": "^8.2.2",
-    "dotenv": "^16.0.3"
+    "zod": "3.23.7"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/jira-client": "^7.1.9",
+    "@types/node": "^22.15.18",
+    "typescript": "^5.8.3"
   }
 }

@@ -1,4 +1,8 @@
 # Cline Rules
+general_rules:
+  - "All new components should be properly gitignored as they are added to the project"
+  - "Each project should include appropriate .gitignore files for its specific technology stack"
+
 tools_folder:
   description: "The tools folder contains node MCP servers"
   organization_rules:
