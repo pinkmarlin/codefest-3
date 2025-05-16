@@ -1,9 +1,12 @@
 
 # [Dr. Triage](./Dr_Triage.mp4)
 
+<video src="./Dr_Triage.mp4" controls width="600">
+  Your browser does not support the video tag.
+</video>
+
 Run `node server.js` to create the MCP server
 Run `node cli.js` to run the cli demo
-
 
 
 ## Tasks
