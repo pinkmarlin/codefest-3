@@ -5,7 +5,9 @@
   Your browser does not support the video tag.
 </video>
 
-Run `node server.js` to create the MCP server
+[![Watch the demo](./Dr_Triage.png)](./Dr_Triage.mp4)
+
+Run `node server.js` timage.pngo create the MCP server
 Run `node cli.js` to run the cli demo
 
 
