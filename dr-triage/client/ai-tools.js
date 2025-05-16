@@ -13,6 +13,7 @@ const mcpClient = await experimental_createMCPClient({
   name: "Dr. Triage's MCP Server",
 });
 
+// Example to insert client side tools outside of the MCP
 const getGuitars = tool({
   description: "Get all guitars from the database",
   parameters: z.object({}),
@@ -23,6 +24,6 @@ export default async function getTools() {
   const tools = await mcpClient.tools();
   return {
     ...tools,
-    getGuitars,
+    // getGuitars,
   };
 }
