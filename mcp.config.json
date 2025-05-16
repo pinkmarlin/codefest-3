@@ -1,0 +1,14 @@
+{
+  "servers": [
+    {
+      "name": "jira",
+      "command": "node tools/jira-mcp-server/build/index.js",
+      "description": "A server for accessing Marriott API Issues in Jira, specifically designed to pull bug tickets from The Marriott API Jira projects"
+    },
+    {
+      "name": "marriott-jira",
+      "url": "https://jira-mcp-server-89b2c65441ff.herokuapp.com/jira",
+      "description": "Marriott Jira MCP server for accessing Jira issues and projects"
+    }
+  ]
+}

@@ -44,6 +44,8 @@ JIRA_PROJECT_KEY=PROJECT
 
 ## Usage
 
+### Standard Usage
+
 Start the MCP server:
 
 ```bash
@@ -51,6 +53,70 @@ npm start
 ```
 
 The server will start and be available for use with MCP-compatible clients.
+
+### Docker Usage
+
+This project includes Docker support for easy deployment and consistent environments. The Docker setup is configured to use the `linux/amd64` platform for maximum compatibility.
+
+#### Using Docker Directly
+
+1. Build the Docker image:
+
+```bash
+cd tools/jira-mcp-server
+docker build --platform linux/amd64 -t jira-mcp-server .
+```
+
+2. Run the container:
+
+```bash
+docker run -p 3000:3000 --env-file .env jira-mcp-server
+```
+
+#### Using Docker Compose
+
+1. Start the service:
+
+```bash
+cd tools/jira-mcp-server
+docker-compose up
+```
+
+2. To run in detached mode:
+
+```bash
+docker-compose up -d
+```
+
+3. To stop the service:
+
+```bash
+docker-compose down
+```
+
+#### Using the Helper Script
+
+A helper script is provided to simplify Docker operations:
+
+1. Make the script executable (if not already):
+
+```bash
+chmod +x docker-run.sh
+```
+
+2. Use the script with one of the following commands:
+
+```bash
+./docker-run.sh build      # Build the Docker image
+./docker-run.sh run        # Run the Docker container
+./docker-run.sh start      # Build and run the Docker container
+./docker-run.sh compose    # Run using docker-compose
+./docker-run.sh compose-d  # Run using docker-compose in detached mode
+./docker-run.sh stop       # Stop the running container
+./docker-run.sh help       # Show help message
+```
+
+The script will automatically check for a valid .env file before running.
 
 ## Available Tools
 
