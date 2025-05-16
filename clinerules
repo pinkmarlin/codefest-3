@@ -2,6 +2,7 @@
 general_rules:
   - "All new components should be properly gitignored as they are added to the project"
   - "Each project should include appropriate .gitignore files for its specific technology stack"
+  - "Each project should have appropriate levels of info and debug logging for each interaction"
 
 tools_folder:
   description: "The tools folder contains node MCP servers"
@@ -15,5 +16,23 @@ tools_folder:
       tools:
         - name: "get_bug_tickets"
           description: "Retrieves Jira tickets that are classified as bugs"
-      configuration: "Requires Jira credentials in a .env file"
+          parameters:
+            - name: "project"
+              description: "Jira project key (defaults to JIRA_PROJECT_KEY from env)"
+              required: false
+            - name: "maxResults"
+              description: "Maximum number of results to return (default: 10)"
+              required: false
+            - name: "status"
+              description: "Filter bugs by status (e.g., \"Open\", \"In Progress\", \"Done\")"
+              required: false
+          returns: "JSON object containing bug tickets with details like key, summary, status, priority, assignee, creation date, update date, and description"
+      configuration: "Requires Jira credentials in a .env file with the following variables:"
+      env_variables:
+        - "JIRA_HOST: The hostname of your Jira instance"
+        - "JIRA_ORGANIZATION: Your Jira organization ID"
+        - "JIRA_ORGANIZATION_KEY: Your Jira organization API key"
+        - "JIRA_PROJECT_KEY: (Optional) Default project key to use if not specified in the request"
+      endpoint: "The server runs on http://localhost:3000/jira by default"
+      registration: "This MCP server is registered in the mcp.config.json file and can be accessed by this prompt using the 'use_mcp_tool' tool with server_name 'jira'"
   usage: "To use an MCP server, first install its dependencies and configure it according to its README.md file"

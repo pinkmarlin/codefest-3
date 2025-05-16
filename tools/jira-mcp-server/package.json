@@ -8,7 +8,11 @@
   },
   "scripts": {
     "build": "tsc && chmod 755 build/index.js",
-    "start": "npm run build && node build/index.js"
+    "start": "npm run build && node build/index.js",
+    "heroku:build":"heroku container:push web -a jira-mcp-server",
+    "heroku:release":"heroku container:release web -a jira-mcp-server",
+    "heroku": "npm run heroku:build && npm run heroku:release",
+    "dev": "nodemon --watch src --ext ts,json --exec \"node --experimental-specifier-resolution=node --loader ts-node/esm src/index.ts\""
   },
   "files": [
     "build"
@@ -28,6 +32,9 @@
     "@types/express": "^5.0.1",
     "@types/jira-client": "^7.1.9",
     "@types/node": "^22.15.18",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
   }
 }
