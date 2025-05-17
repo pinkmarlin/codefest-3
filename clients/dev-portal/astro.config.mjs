@@ -8,8 +8,5 @@ import netlify from '@astrojs/netlify';
 export default defineConfig({
   output: 'server', // Enable server-side rendering
   adapter: netlify(),
-  integrations: [tailwind(), react()],
-  experimental: {
-    session: true
-  }
+  integrations: [tailwind(), react()]
 });
