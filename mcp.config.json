@@ -9,6 +9,11 @@
       "name": "marriott-jira",
       "url": "https://jira-mcp-server-89b2c65441ff.herokuapp.com/jira",
       "description": "Marriott Jira MCP server for accessing Jira issues and projects"
+    },
+    {
+      "name": "marriott-jira-mcp",
+      "command": "node tools/jira-mcp-server/build/index.js",
+      "description": "Local Jira MCP server with prepare_bug_ticket and create_bug tools for validating and creating bug tickets"
     }
   ]
 }

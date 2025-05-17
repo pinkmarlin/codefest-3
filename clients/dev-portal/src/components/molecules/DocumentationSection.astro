@@ -1,0 +1,59 @@
+---
+interface DocItem {
+  title: string;
+  description: string;
+  link: string;
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  items: DocItem[];
+}
+
+const { title, subtitle, items } = Astro.props;
+---
+
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+        {title}
+      </h2>
+      <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
+        {subtitle}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        items.map((item) => (
+          <a
+            href={item.link}
+            class="block group bg-gray-50 p-6 rounded-lg hover:bg-primary-50 transition-colors duration-300"
+          >
+            <h3 class="text-xl font-medium text-gray-900 group-hover:text-primary-700 transition-colors duration-300">
+              {item.title}
+            </h3>
+            <p class="mt-2 text-base text-gray-500">{item.description}</p>
+            <div class="mt-4 flex items-center text-primary-600 group-hover:text-primary-800 transition-colors duration-300">
+              <span>Learn more</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 ml-1"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

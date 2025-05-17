@@ -1,0 +1,23 @@
+---
+import Layout from './Layout.astro';
+import Header from '../components/atoms/Header.astro';
+import Footer from '../components/atoms/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  activeLink?: string;
+}
+
+const { title, description, activeLink = "home" } = Astro.props;
+---
+
+<Layout title={title} description={description}>
+  <div class="flex flex-col min-h-screen">
+    <Header activeLink={activeLink} />
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <Footer />
+  </div>
+</Layout>

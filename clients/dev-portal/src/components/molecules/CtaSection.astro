@@ -1,0 +1,50 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  primaryButtonText: string;
+  primaryButtonLink: string;
+  secondaryButtonText?: string;
+  secondaryButtonLink?: string;
+}
+
+const {
+  title,
+  subtitle,
+  primaryButtonText,
+  primaryButtonLink,
+  secondaryButtonText,
+  secondaryButtonLink,
+} = Astro.props;
+---
+
+<section class="bg-primary-700 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+        {title}
+      </h2>
+      <p class="mt-4 max-w-2xl mx-auto text-xl text-primary-100">
+        {subtitle}
+      </p>
+      <div class="mt-8 flex justify-center space-x-4">
+        <a
+          href={primaryButtonLink}
+          class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-primary-700 bg-white hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary-700 focus:ring-white"
+        >
+          {primaryButtonText}
+        </a>
+        {
+          secondaryButtonText && secondaryButtonLink && (
+            <a
+              href={secondaryButtonLink}
+              class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary-600 hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary-700 focus:ring-white"
+            >
+              {secondaryButtonText}
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>

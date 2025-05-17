@@ -1,0 +1,280 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const sidebarLinks = [
+  { title: "Getting Started", href: "#getting-started" },
+  { title: "API Reference", href: "#api-reference" },
+  { title: "SDK Guides", href: "#sdk-guides" },
+  { title: "Authentication", href: "#authentication" },
+  { title: "Best Practices", href: "#best-practices" },
+  { title: "Tutorials", href: "#tutorials" }
+];
+---
+
+<MainLayout title="Documentation | Marriott Developer Portal" activeLink="docs">
+  <div class="bg-gray-50 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+        <!-- Sidebar -->
+        <div class="hidden lg:block lg:col-span-3">
+          <nav class="sticky top-8 space-y-1 bg-white p-4 rounded-lg shadow-sm">
+            <h3 class="text-lg font-medium text-gray-900 mb-3">Documentation</h3>
+            {sidebarLinks.map((link) => (
+              <a
+                href={link.href}
+                class="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-700 rounded-md"
+              >
+                {link.title}
+              </a>
+            ))}
+          </nav>
+        </div>
+
+        <!-- Mobile sidebar toggle -->
+        <div class="lg:hidden mb-6">
+          <button
+            type="button"
+            class="mobile-sidebar-toggle w-full flex justify-between items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+          >
+            <span>Documentation Menu</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          
+          <!-- Mobile sidebar menu (hidden by default) -->
+          <div class="mobile-sidebar hidden mt-2 bg-white p-4 rounded-lg shadow-sm">
+            {sidebarLinks.map((link) => (
+              <a
+                href={link.href}
+                class="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-700 rounded-md"
+              >
+                {link.title}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="lg:col-span-9">
+          <div class="bg-white shadow rounded-lg p-6">
+            <h1 class="text-3xl font-bold text-gray-900 mb-6">Documentation</h1>
+            
+            <section id="getting-started" class="mb-12">
+              <h2 class="text-2xl font-bold text-gray-900 mb-4">Getting Started</h2>
+              <p class="text-gray-700 mb-4">
+                Welcome to the Marriott Developer Portal documentation. This guide will help you get started with our APIs and SDKs.
+              </p>
+              <p class="text-gray-700 mb-4">
+                To begin using Marriott's developer tools, you'll need to create an account and obtain API credentials. Follow the steps below to get started.
+              </p>
+              <div class="bg-gray-50 p-4 rounded-md border border-gray-200 mb-4">
+                <h3 class="text-lg font-medium text-gray-900 mb-2">Step 1: Create an Account</h3>
+                <p class="text-gray-700">
+                  Sign up for a developer account to access our APIs and developer tools.
+                </p>
+              </div>
+              <div class="bg-gray-50 p-4 rounded-md border border-gray-200 mb-4">
+                <h3 class="text-lg font-medium text-gray-900 mb-2">Step 2: Generate API Keys</h3>
+                <p class="text-gray-700">
+                  Once your account is created, generate API keys from your developer dashboard.
+                </p>
+              </div>
+              <div class="bg-gray-50 p-4 rounded-md border border-gray-200">
+                <h3 class="text-lg font-medium text-gray-900 mb-2">Step 3: Choose Your SDK</h3>
+                <p class="text-gray-700">
+                  Select the SDK for your preferred programming language and follow the installation instructions.
+                </p>
+              </div>
+            </section>
+            
+            <section id="api-reference" class="mb-12">
+              <h2 class="text-2xl font-bold text-gray-900 mb-4">API Reference</h2>
+              <p class="text-gray-700 mb-6">
+                Comprehensive documentation for all available APIs and endpoints.
+              </p>
+              
+              <div class="border-b border-gray-200 mb-6">
+                <h3 class="text-xl font-medium text-gray-900 mb-2">Reservations API</h3>
+                <p class="text-gray-700 mb-4">
+                  Access and manage hotel reservations programmatically.
+                </p>
+                <div class="bg-gray-50 p-4 rounded-md border border-gray-200 mb-4 overflow-x-auto">
+                  <pre class="text-sm text-gray-800">GET /api/v1/reservations</pre>
+                </div>
+              </div>
+              
+              <div class="border-b border-gray-200 mb-6">
+                <h3 class="text-xl font-medium text-gray-900 mb-2">Properties API</h3>
+                <p class="text-gray-700 mb-4">
+                  Retrieve information about Marriott properties worldwide.
+                </p>
+                <div class="bg-gray-50 p-4 rounded-md border border-gray-200 mb-4 overflow-x-auto">
+                  <pre class="text-sm text-gray-800">GET /api/v1/properties</pre>
+                </div>
+              </div>
+              
+              <div>
+                <h3 class="text-xl font-medium text-gray-900 mb-2">User API</h3>
+                <p class="text-gray-700 mb-4">
+                  Manage user profiles and preferences.
+                </p>
+                <div class="bg-gray-50 p-4 rounded-md border border-gray-200 mb-4 overflow-x-auto">
+                  <pre class="text-sm text-gray-800">GET /api/v1/users/&#123;userId&#125;</pre>
+                </div>
+              </div>
+            </section>
+            
+            <section id="sdk-guides" class="mb-12">
+              <h2 class="text-2xl font-bold text-gray-900 mb-4">SDK Guides</h2>
+              <p class="text-gray-700 mb-6">
+                Step-by-step guides for using our SDKs in your applications.
+              </p>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-gray-50 p-4 rounded-md border border-gray-200">
+                  <h3 class="text-lg font-medium text-gray-900 mb-2">JavaScript SDK</h3>
+                  <p class="text-gray-700 mb-2">
+                    Integrate with our services using JavaScript.
+                  </p>
+                  <a href="#" class="text-primary-600 hover:text-primary-800">View Guide →</a>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-md border border-gray-200">
+                  <h3 class="text-lg font-medium text-gray-900 mb-2">Python SDK</h3>
+                  <p class="text-gray-700 mb-2">
+                    Integrate with our services using Python.
+                  </p>
+                  <a href="#" class="text-primary-600 hover:text-primary-800">View Guide →</a>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 p-4 rounded-md border border-gray-200">
+                  <h3 class="text-lg font-medium text-gray-900 mb-2">Java SDK</h3>
+                  <p class="text-gray-700 mb-2">
+                    Integrate with our services using Java.
+                  </p>
+                  <a href="#" class="text-primary-600 hover:text-primary-800">View Guide →</a>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-md border border-gray-200">
+                  <h3 class="text-lg font-medium text-gray-900 mb-2">Ruby SDK</h3>
+                  <p class="text-gray-700 mb-2">
+                    Integrate with our services using Ruby.
+                  </p>
+                  <a href="#" class="text-primary-600 hover:text-primary-800">View Guide →</a>
+                </div>
+              </div>
+            </section>
+            
+            <section id="authentication" class="mb-12">
+              <h2 class="text-2xl font-bold text-gray-900 mb-4">Authentication</h2>
+              <p class="text-gray-700 mb-4">
+                Learn how to authenticate your applications with Marriott services.
+              </p>
+              <p class="text-gray-700 mb-4">
+                Our APIs use OAuth 2.0 for authentication. Follow the steps below to authenticate your requests.
+              </p>
+              
+              <div class="bg-gray-50 p-4 rounded-md border border-gray-200 mb-4">
+                <h3 class="text-lg font-medium text-gray-900 mb-2">OAuth 2.0 Flow</h3>
+                <p class="text-gray-700 mb-2">
+                  The authentication flow consists of the following steps:
+                </p>
+                <ol class="list-decimal list-inside text-gray-700 space-y-1">
+                  <li>Obtain client credentials</li>
+                  <li>Request an access token</li>
+                  <li>Use the access token in API requests</li>
+                  <li>Refresh the token when it expires</li>
+                </ol>
+              </div>
+              
+              <div class="bg-gray-50 p-4 rounded-md border border-gray-200">
+                <h3 class="text-lg font-medium text-gray-900 mb-2">Example Request</h3>
+                <div class="overflow-x-auto">
+                  <pre class="text-sm text-gray-800">
+curl -X POST https://api.marriott.com/oauth/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET"
+                  </pre>
+                </div>
+              </div>
+            </section>
+            
+            <section id="best-practices" class="mb-12">
+              <h2 class="text-2xl font-bold text-gray-900 mb-4">Best Practices</h2>
+              <p class="text-gray-700 mb-6">
+                Recommended patterns and practices for optimal integration.
+              </p>
+              
+              <div class="space-y-6">
+                <div>
+                  <h3 class="text-xl font-medium text-gray-900 mb-2">Rate Limiting</h3>
+                  <p class="text-gray-700">
+                    Implement proper rate limiting in your applications to avoid hitting our API limits. We recommend implementing exponential backoff for retries.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 class="text-xl font-medium text-gray-900 mb-2">Caching</h3>
+                  <p class="text-gray-700">
+                    Cache responses when appropriate to reduce the number of API calls and improve performance.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 class="text-xl font-medium text-gray-900 mb-2">Error Handling</h3>
+                  <p class="text-gray-700">
+                    Implement robust error handling to gracefully handle API errors and provide a good user experience.
+                  </p>
+                </div>
+              </div>
+            </section>
+            
+            <section id="tutorials">
+              <h2 class="text-2xl font-bold text-gray-900 mb-4">Tutorials</h2>
+              <p class="text-gray-700 mb-6">
+                Hands-on tutorials to help you build common integrations.
+              </p>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <a href="#" class="block group">
+                  <div class="bg-gray-50 p-4 rounded-md border border-gray-200 hover:border-primary-500 transition-colors duration-300">
+                    <h3 class="text-lg font-medium text-gray-900 group-hover:text-primary-700 mb-2">Building a Booking Widget</h3>
+                    <p class="text-gray-700 mb-2">
+                      Learn how to create a custom booking widget for your website.
+                    </p>
+                    <span class="text-primary-600 group-hover:text-primary-800">Read Tutorial →</span>
+                  </div>
+                </a>
+                
+                <a href="#" class="block group">
+                  <div class="bg-gray-50 p-4 rounded-md border border-gray-200 hover:border-primary-500 transition-colors duration-300">
+                    <h3 class="text-lg font-medium text-gray-900 group-hover:text-primary-700 mb-2">Property Search Integration</h3>
+                    <p class="text-gray-700 mb-2">
+                      Implement a property search feature in your application.
+                    </p>
+                    <span class="text-primary-600 group-hover:text-primary-800">Read Tutorial →</span>
+                  </div>
+                </a>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>
+
+<script>
+  // Toggle mobile sidebar
+  const mobileSidebarToggle = document.querySelector('.mobile-sidebar-toggle');
+  const mobileSidebar = document.querySelector('.mobile-sidebar');
+  
+  if (mobileSidebarToggle && mobileSidebar) {
+    mobileSidebarToggle.addEventListener('click', () => {
+      mobileSidebar.classList.toggle('hidden');
+    });
+  }
+</script>

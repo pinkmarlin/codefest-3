@@ -1,0 +1,76 @@
+{
+  "project": {
+    "type": "astro",
+    "description": "Astro.js developer portal application",
+    "purpose": "Developer portal for Marriott's internal tools and documentation",
+    "styling": {
+      "framework": "tailwind",
+      "description": "Using Tailwind CSS for styling components and layouts",
+      "ui": "Flowbite component library for consistent design patterns"
+    },
+    "linting": {
+      "description": "Rules for code quality and consistency",
+      "rules": [
+        "Run lint after every code change",
+        "All ESLint rules must be followed",
+        "Fix any linting errors before committing code"
+      ],
+      "command": "npm run lint",
+      "configuration": {
+        "files": [".eslintrc.cjs", "eslint.config.js"],
+        "description": "Project uses ESLint for code quality enforcement"
+      }
+    },
+    "componentDesign": {
+      "pattern": "atomic",
+      "description": "Project utilizes atomic design theory for component organization",
+      "allowedTypes": ["atoms", "molecules", "organisms"],
+      "structure": "Components should be organized into atoms, molecules, or organisms folders based on their complexity and composition"
+    },
+    "codeOrganization": {
+      "pages": {
+        "description": "Rules for creating and managing pages",
+        "rules": [
+          "Pages should be created in the src/pages directory",
+          "Each page should have a corresponding layout in the src/layouts directory",
+          "Pages should use components from the src/components directory",
+          "Pages should be responsive and mobile-friendly"
+        ],
+        "pageTypes": [
+          {
+            "type": "home",
+            "description": "Homepage with navigation and featured content"
+          },
+          {
+            "type": "documentation",
+            "description": "Documentation pages with sidebar navigation"
+          },
+          {
+            "type": "tools",
+            "description": "Tools pages with interactive elements"
+          }
+        ]
+      },
+      "components": {
+        "description": "Rules for organizing components",
+        "rules": [
+          "Components should be organized by atomic design principles",
+          "Each component should have a single responsibility",
+          "Components should be reusable and composable",
+          "Components should be responsive and mobile-friendly"
+        ]
+      }
+    }
+  },
+  "workflow": {
+    "codeQuality": {
+      "description": "Workflow steps to ensure code quality",
+      "steps": [
+        "Run lint after making code changes using 'npm run lint'",
+        "Review and fix any linting errors or warnings",
+        "Ensure code follows project style guidelines",
+        "Test functionality after fixing linting issues"
+      ]
+    }
+  }
+}
